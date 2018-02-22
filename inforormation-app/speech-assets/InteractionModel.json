@@ -1,0 +1,150 @@
+{
+  "languageModel": {
+    "types": [
+      {
+        "name": "List_Of_Faculties",
+        "values": [
+          {
+            "id": null,
+            "name": {
+              "value": "Computer Science",
+              "synonyms": [
+                "IT"
+              ]
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Electronics and Telecommunications",
+              "synonyms": [
+                "Electronics",
+                "Telecommunications"
+              ]
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Transport and Logistics",
+              "synonyms": [
+                "Logistics",
+                "Transport"
+              ]
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Aviation Transport",
+              "synonyms": [
+                "Aviation"
+              ]
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Economics and Management",
+              "synonyms": [
+                "Economics",
+                "Management"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "intents": [
+      {
+        "name": "AMAZON.CancelIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.HelpIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.StopIntent",
+        "samples": []
+      },
+      {
+        "name": "InstituteInformationIntent",
+        "samples": [
+          "Tell me about your institute",
+          "Information about institute",
+          "Tell me about TTI",
+          "Information about TTI"
+        ],
+        "slots": []
+      },
+      {
+        "name": "InstituteMissionIntent",
+        "samples": [
+          "Tell me about mission of TTI",
+          "Tell about mission of TSI",
+          "Mission of TTI"
+        ],
+        "slots": []
+      },
+      {
+        "name": "InstituteProgrammsIntent",
+        "samples": [
+          "Tell me about {Faculty} faculty",
+          "Tell me about {Faculty}",
+          "Information about {Faculty} faculty",
+          "Tell me about faculty"
+        ],
+        "slots": [
+          {
+            "name": "Faculty",
+            "type": "List_Of_Faculties",
+            "samples": [
+              "{Faculty} ",
+              "About {Faculty}"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "InstituteReasonIntent",
+        "samples": [
+          "Why should I choose TTI"
+        ],
+        "slots": []
+      }
+    ],
+    "invocationName": "information app"
+  },
+  "prompts": [
+    {
+      "id": "Elicit.Intent-InstituteProgrammsIntent.IntentSlot-Faculty",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "There are five different faculties - Computer Science, Electronics and Telecommunications, Transport and Logistics, Aviation Transport, Economics and Management. Which one?"
+        }
+      ]
+    }
+  ],
+  "dialog": {
+    "intents": [
+      {
+        "name": "InstituteProgrammsIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "Faculty",
+            "type": "List_Of_Faculties",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicitation": "Elicit.Intent-InstituteProgrammsIntent.IntentSlot-Faculty"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
