@@ -35,6 +35,11 @@ const handlers = {
     	this.response.speak(instituteReason);
         this.emit(':responseReady');
     },
+    'InstituteSiteIntent': function () {
+    	this.response.speak('Open tsi.lv');
+        Opn("https://www.tsi.lv");
+        this.emit(':responseReady');
+    },
     'InstituteProgrammsIntent': function () {
 
         var filledSlots = delegateSlotCollection.call(this);
@@ -64,8 +69,6 @@ const handlers = {
     'AMAZON.HelpIntent': function () {
         const speechOutput = 'This is the information app about TTI';
         const reprompt = '';
-
-        Opn("https://www.tsi.lv");
 
         this.response.speak(speechOutput).listen(reprompt);
         this.emit(':responseReady');
