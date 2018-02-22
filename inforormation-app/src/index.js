@@ -1,6 +1,6 @@
  let speechOutput;
  let reprompt;
- const welcomeOutput = "I can tall you information about TTI";
+ const welcomeOutput = "I can tell you information about TTI";
  const instituteInformation = "Transport and telecommunication institute – is a modern university with the almost centennial history. TTI – is the university-successor of the legendary RKIIGA (Riga Red-Banner Civil Aviation Institute) and RAU (Riga Aviation Institute).";
  const instituteMission = "Mission of TTI – combination of classic university traditions and innovative technologies, exact sciences and creative approach.";
  const instituteReason = "Learn what is relevant! TTI offers study programs in the most sought after fields. Get a respectable diploma! TTI issues state diplomas, which are recognized both in Europe and all around the world. Since 2005, the Institute issues a „Diploma Supplement” approved by the European Commission – it is a document confirming the recognition of the European quality of academic and professional programs of our institution of the higher education. Pay less! Flexible discount system allows many students to pay less for their tuition. Travel around Europe! Thanks to the ERASMUS+ program, you can study or take an internship for one semester in one of the partnership universities of TTI or at specialized companies in other countries of the European Union. Have fun with your friends! Student life at TTI is a series of bright and exciting events! Join us! Get scholarship! Citizens from countries which have signed an Agreement on co-operation in education and science can apply for Latvian goverment scholarships.";
@@ -38,6 +38,11 @@ const handlers = {
     'InstituteSiteIntent': function () {
     	this.response.speak('Open tsi.lv');
         Opn("https://www.tsi.lv");
+        this.emit(':responseReady');
+    },
+    'InstituteSiteProgrammsIntent': function () {
+    	this.response.speak('I will show avaliable study programmes in TTI');
+        Opn("https://www.tsi.lv/en/content/study-programmes");
         this.emit(':responseReady');
     },
     'InstituteProgrammsIntent': function () {
